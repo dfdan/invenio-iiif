@@ -11,7 +11,7 @@
 import tempfile
 
 import pkg_resources
-from flask import g
+from flask import g, abort
 from invenio_files_rest.views import ObjectResource
 
 try:
@@ -32,7 +32,10 @@ def protect_api(uuid=None, **kwargs):
     Retrieve ObjectVersion of image being requested and check permission
     using the Invenio-Files-REST permission factory.
     """
-    bucket, version_id, key = uuid.split(':', 2)
+    try:
+        bucket, version_id, key = uuid.split(':', 2)
+    except:
+       abort(404)
     g.obj = ObjectResource.get_object(bucket, key, version_id)
     return g.obj
 
