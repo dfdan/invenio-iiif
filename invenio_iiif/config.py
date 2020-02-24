@@ -15,7 +15,7 @@ IIIF_UI_URL = '/api{}'.format(IIIF_API_PREFIX)
 """URL to IIIF API endpoint (allow hostname)."""
 
 IIIF_PREVIEWER_PARAMS = {
-    'size': '750,'
+    'size': ',400'
 }
 """Parameters for IIIF image previewer extension."""
 
